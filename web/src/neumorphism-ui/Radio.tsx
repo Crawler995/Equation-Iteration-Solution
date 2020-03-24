@@ -2,14 +2,11 @@ import styled from 'styled-components';
 import React from 'react';
 import { color } from './config';
 
-const Group = styled.div`
+const Group = styled.div``;
 
-`;
-
-const ItemWrapper = styled.span`
-  display: inline-block;
-
-  margin: 0px 10px;
+const ItemWrapper = styled.div`
+  width: fit-content;
+  margin: 10px 10px;
 `;
 
 const shadow = `
@@ -24,7 +21,7 @@ const checkedShadow = `
   inset -2px -2px 4px #FFF,
   2px 2px 6px rgba(55, 84, 170, .15),
   -2px -2px 6px #FFF
-`
+`;
 
 const Item = styled.input.attrs({
   type: 'radio'
@@ -88,28 +85,24 @@ interface IProps {
   name: string;
   items: string[];
   default: string;
-  onChanged: (selectedItem: string) => void;
+  onChange: (selectedItem: string) => void;
 }
 
 function Radio(props: IProps) {
   return (
     <Group>
-      {
-        props.items.map(item => (
-          <ItemWrapper key={`${props.name}-${item}`}>
-            <Item
-              id={`${props.name}-${item}`}
-              name={props.name}
-              value={item}
-              defaultChecked={props.default === item}
-              onChange={(e) => props.onChanged(e.target.value)}
-            />
-            <Label htmlFor={`${props.name}-${item}`}>
-              {item}
-            </Label>
-          </ItemWrapper>
-        ))
-      }
+      {props.items.map(item => (
+        <ItemWrapper key={`${props.name}-${item}`}>
+          <Item
+            id={`${props.name}-${item}`}
+            name={props.name}
+            value={item}
+            defaultChecked={props.default === item}
+            onChange={e => props.onChange(e.target.value)}
+          />
+          <Label htmlFor={`${props.name}-${item}`}>{item}</Label>
+        </ItemWrapper>
+      ))}
     </Group>
   );
 }

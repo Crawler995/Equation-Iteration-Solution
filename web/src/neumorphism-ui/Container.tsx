@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import { color } from './config';
 
 const Container = styled.div`
-  overflow: hidden;
+  position: relative;
   background-color: ${color.backgroundColor};
   color: ${color.grey};
-  height: 100vh;
+  min-height: 100vh;
   padding: 15px;
 `;
 

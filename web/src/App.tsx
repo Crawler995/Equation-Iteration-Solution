@@ -4,6 +4,7 @@ import EqualityInput from './EquationInput';
 import { Row, Col } from './layout';
 import { Container } from './neumorphism-ui';
 import Header from './neumorphism-ui/Header';
+import ResultShow from './ResultShow';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -16,6 +17,8 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
+  const resultUpdateHandler = () => {};
+
   return (
     <div className="App">
       <GlobalStyle />
@@ -24,9 +27,10 @@ function App() {
 
         <Row>
           <Col span={12}>
-            <EqualityInput />
+            <EqualityInput onSubmitSuccess={resultUpdateHandler} />
           </Col>
           <Col span={12}>
+            <ResultShow />
           </Col>
         </Row>
       </Container>

@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { color } from './config';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const buttonShadow = `
   4px 4px 10px rgba(55, 84, 170, .15),
@@ -40,7 +40,7 @@ const RawButton = styled.button`
   border-radius: 40px;
   font-size: 18px;
 
-  color: ${color.grey};
+  color: ${color.primaryColor};
   box-shadow: ${buttonShadow};
   transition: all 0.3s;
 
@@ -52,7 +52,6 @@ const RawButton = styled.button`
     cursor: pointer;
 
     &:hover {
-      color: ${color.primaryColor};
       box-shadow: ${buttonHoverShadow};
     }
 
@@ -70,7 +69,7 @@ const loadingAnimation = keyframes`
   0 {transform: translate(0, 0);}
   50% {transform: translate(0, 6px);}
   100% {transform: translate(0, 0);}
-`
+`;
 
 const ButtonLoadingLine = styled.span`
   display: inline-block;
@@ -79,7 +78,7 @@ const ButtonLoadingLine = styled.span`
   margin: 0px 2px;
   border-radius: 8px;
 
-  background-color: ${color.primaryColor}
+  background-color: ${color.primaryColor};
 `;
 
 const ButtonLoadingWrapper = styled.div`
@@ -87,7 +86,7 @@ const ButtonLoadingWrapper = styled.div`
   padding: 10px 0px;
   margin-top: 30px;
   text-align: center;
-  opacity: ${(props: {opacity: number}) => props.opacity};
+  opacity: ${(props: { opacity: number }) => props.opacity};
 
   span {
     animation: ${loadingAnimation} 0.6s infinite;
@@ -118,20 +117,16 @@ function ButtonLoading(props: { loading: boolean }) {
 interface IProps {
   text: string;
   disabled: boolean;
+  loading: boolean;
   onClick: () => void;
 }
 
 function Button(props: IProps) {
-  const [loading, setLoading] = useState(false);
-
   return (
     <div>
-      <ButtonLoading loading={loading} />
-      <RawButton
-        disabled={props.disabled || loading}
-        onClick={props.onClick}
-      >
-        { props.text }
+      <ButtonLoading loading={props.loading} />
+      <RawButton disabled={props.disabled || props.loading} onClick={props.onClick}>
+        {props.text}
       </RawButton>
     </div>
   );

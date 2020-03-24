@@ -9,9 +9,9 @@ const Col = styled.div`
   width: 100%;
   padding: 0px 20px 20px 20px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 920px) {
     width: ${(props: IProps) => (props.span / 24) * 100 + '%'};
-    padding: 0px 20px;
+    padding: 4px 20px;
   }
 `;
 

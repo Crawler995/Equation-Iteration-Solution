@@ -36,11 +36,18 @@ const RawInput = styled.input`
 
 interface IProps {
   pattern: string;
+  value: string;
   onChange: (content: string) => void;
 }
 
 function Input(props: IProps) {
-  return <RawInput pattern={props.pattern} onChange={(e) => props.onChange(e.target.value)} />
+  return (
+    <RawInput
+      pattern={props.pattern}
+      value={props.value}
+      onChange={e => props.onChange(e.target.value)}
+    />
+  );
 }
 
 export default Input;

@@ -28,8 +28,8 @@ const Title4 = styled.h4`
   ${style};
 `;
 
-function Title(props: {level: number, text: string}) {
-  const {text, level} = props;
+function Title(props: { level: number; text: string }) {
+  const { text, level } = props;
   const titles = [
     <Title1>{text}</Title1>,
     <Title2>{text}</Title2>,
