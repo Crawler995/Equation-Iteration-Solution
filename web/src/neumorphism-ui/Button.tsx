@@ -84,7 +84,7 @@ const ButtonLoadingLine = styled.span`
 const ButtonLoadingWrapper = styled.div`
   height: 30px;
   padding: 10px 0px;
-  margin-top: 30px;
+  margin-top: 20px;
   text-align: center;
   opacity: ${(props: { opacity: number }) => props.opacity};
 

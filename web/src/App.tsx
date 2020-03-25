@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createGlobalStyle } from 'styled-components';
 import EqualityInput from './EquationInput';
 import { Row, Col } from './layout';
 import { Container } from './neumorphism-ui';
 import Header from './neumorphism-ui/Header';
 import ResultShow from './ResultShow';
+import { Step } from './types';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -17,20 +18,27 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
-  const resultUpdateHandler = () => {};
+  const [solutionSteps, setSolutionSteps] = useState([] as Step[]);
 
   return (
     <div className="App">
       <GlobalStyle />
       <Container>
-        <Header>EQUATION ITERATION SOLUTION</Header>
+        <Header
+          title="EQUATION ITERATION SOLUTION"
+          author="Zhang Qinglong 1120172135"
+          link="https://github.com/Crawler995"
+        />
 
         <Row>
           <Col span={12}>
-            <EqualityInput onSubmitSuccess={resultUpdateHandler} />
+            <EqualityInput onSubmitSuccess={(msg) => {
+              setSolutionSteps([]);
+              setSolutionSteps(msg);
+            }} />
           </Col>
           <Col span={12}>
-            <ResultShow />
+            <ResultShow solutionSteps={solutionSteps} />
           </Col>
         </Row>
       </Container>
