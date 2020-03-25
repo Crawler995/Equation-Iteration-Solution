@@ -18,8 +18,15 @@ class EquationSolution:
 
         self._steps = []
 
-    def _estimate_is_convergent(self, iteration_fn):
+    def _estimate_is_convergent(self):
         pass
+
+    def _output_convergence(self):
+        is_convergent = self._estimate_is_convergent()
+        if not is_convergent:
+            self._record_step(True, 'estimated f(x) is not convergent, but try iterating')
+        else:
+            self._record_step(False, 'estimated f(x) is convergent, start iteration')
 
     def _record_step(self, is_failed, msg):
         self._logger.info(msg)
@@ -38,5 +45,5 @@ class EquationSolution:
         return float(solution), self._steps
 
     def _output_error(self, error):
-        self._record_step(True, error)
+        self._record_step(True, error + '\n')
         return None, self._steps

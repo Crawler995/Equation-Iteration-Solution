@@ -2,14 +2,17 @@ from lib.EquationSolution import EquationSolution
 from sympy import *
 
 
-class AtikenSolution(EquationSolution):
+class AitkenSolution(EquationSolution):
     def __init__(self, iteration_fn_str, solution_range, accurate_digits, debug):
         super().__init__(iteration_fn_str, solution_range, accurate_digits, debug)
 
         self._record_step(False, 'φ(x) = %s, x ∈ %s' % (str(self._fn), str(solution_range)))
 
-    def _estimate_is_convergent(self, iteration_fn):
-        diff_fn = diff(iteration_fn, self._x)
+    '''
+    we can estimate that φ(x) is convergent if φ'(a) < 1 and φ'(b) < 1.
+    '''
+    def _estimate_is_convergent(self):
+        diff_fn = diff(self._fn, self._x)
         self._record_step(False, 'φ\'(x) = %s' % str(diff_fn))
 
         x = self._x
@@ -22,16 +25,11 @@ class AtikenSolution(EquationSolution):
 
     def run(self):
         self._record_step(False, 'Atiken Iteration: ')
-
-        is_convergent = self._estimate_is_convergent(self._fn)
-        if not is_convergent:
-            error = 'estimated φ(x) is not convergent, cancel iteration'
-            return self._output_error(error)
-
-        self._record_step(False, 'estimated φ(x) is convergent, start iteration')
+        self._output_convergence()
 
         x = self._x
         xn_1 = self._solution_range[0]
+        xn = 0
         is_find_solution = False
         self._record_step(False, 'x0 = %s' % str(xn_1))
 
@@ -59,6 +57,6 @@ class AtikenSolution(EquationSolution):
             iteration_num += 1
 
         if is_find_solution:
-            return self._output_success(xn_1)
+            return self._output_success(xn)
         else:
             return self._output_error('Iterate more than %d times but no solution found!' % self._max_iteration)

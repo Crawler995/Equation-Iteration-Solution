@@ -8,7 +8,10 @@ class NetwonDownHillSolution(EquationSolution):
 
         self._record_step(False, 'f(x) = %s, x ∈ %s' % (str(self._fn), str(solution_range)))
 
-    def _estimate_is_convergent(self, iteration_fn):
+    '''
+    as if it's always convergent...
+    '''
+    def _estimate_is_convergent(self):
         pass
 
     def run(self):
@@ -19,6 +22,7 @@ class NetwonDownHillSolution(EquationSolution):
 
         x = self._x
         xn_1 = self._solution_range[0]
+        xn = 0
         is_find_solution = False
 
         iteration_num = 1
@@ -50,6 +54,6 @@ class NetwonDownHillSolution(EquationSolution):
             iteration_num += 1
 
         if is_find_solution:
-            return self._output_success(xn_1)
+            return self._output_success(xn)
         else:
             return self._output_error('Iterate more than %d times but no solution found!' % self._max_iteration)
