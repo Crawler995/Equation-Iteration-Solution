@@ -14,6 +14,8 @@ const GlobalStyle = createGlobalStyle`
 
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
       sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    -webkit-tap-highlight-color: transparent;
   }
 `;
 
@@ -23,6 +25,7 @@ function App() {
   return (
     <div className="App">
       <GlobalStyle />
+
       <Container>
         <Header
           title="EQUATION ITERATION SOLUTION"

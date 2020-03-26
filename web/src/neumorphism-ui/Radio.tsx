@@ -81,14 +81,14 @@ const Label = styled.label`
   }
 `;
 
-interface IProps {
+export interface IRadioProps {
   name: string;
   items: string[];
   default: string;
   onChange: (selectedItem: string) => void;
 }
 
-function Radio(props: IProps) {
+function Radio(props: IRadioProps) {
   return (
     <Group>
       {props.items.map(item => (

@@ -29,7 +29,7 @@ const buttonActiveShadow = `
   0px 0px 4px rgba(255, 255, 255, .2)
 `;
 
-const RawButton = styled.button`
+export const RawButton = styled.button`
   position: relative;
   left: 50%;
   transform: translateX(-50%);
@@ -114,14 +114,14 @@ function ButtonLoading(props: { loading: boolean }) {
   );
 }
 
-interface IProps {
+export interface IButtonProps {
   text: string;
   disabled: boolean;
   loading: boolean;
   onClick: () => void;
 }
 
-function Button(props: IProps) {
+function Button(props: IButtonProps) {
   return (
     <div>
       <ButtonLoading loading={props.loading} />

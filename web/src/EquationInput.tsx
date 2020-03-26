@@ -31,7 +31,7 @@ const defaultNeedValidateValues = {
   accurateDigits: true
 };
 
-const iterationMethods = ['Aitken', 'Netwon', 'Netwon Down-Hill'];
+const iterationMethods = ['Aitken', 'Netwon', 'Netwon Down-Hill', 'Single Secant', 'Double Secant'];
 
 export default function EqualityInput(props: IProps) {
   // user input
@@ -197,7 +197,7 @@ export default function EqualityInput(props: IProps) {
             .
           </List.ListItem>
           <List.ListItem>
-            {`When the "Input ${fnSymbol}(x):" is with red border, it doesn't mean that the φ(x) has no synatx
+            {`When the "Input ${fnSymbol}(x):" is with red border, it doesn't mean that the ${fnSymbol}(x) has no synatx
             errors. It just tries avoiding XSS injection and shows the most obvious synatx errors.`}
           </List.ListItem>
         </List.ListWrapper>

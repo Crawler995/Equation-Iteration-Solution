@@ -1,4 +1,4 @@
-import Button from './Button';
+import Button, {RawButton} from './Button';
 import Card from './Card';
 import Container from './Container';
 import Divider from './Divider';
@@ -10,4 +10,4 @@ import Input from './Input';
 import Radio from './Radio';
 import Title from './Title';
 
-export { Button, Card, Container, Divider, Label, List, Link, Radio, Header, Input, Title };
+export { Button, Card, Container, Divider, Label, List, Link, Radio, Header, Input, RawButton, Title };
