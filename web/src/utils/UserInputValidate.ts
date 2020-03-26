@@ -12,11 +12,10 @@ export const canUseMathFunctions = [
   'tan',
   'abs',
   'exp',
-  'log10',
   'log',
   'sqrt'
 ];
-export const canUseMathConstants = ['pi', 'e'];
+export const canUseMathConstants = ['pi', 'E', 'I'];
 const canUseOtherSymbols = ['x'];
 
 export const validateNum = (
@@ -71,6 +70,6 @@ export const validateIterationFn = (iterationFn: string) => {
   canUseOtherSymbols.forEach(symbol => {
     iterationFn = iterationFn.replace(new RegExp(symbol, 'g'), '');
   });
-  console.log(iterationFn)
+  console.log(iterationFn);
   return iterationFn.trim() === '';
 };

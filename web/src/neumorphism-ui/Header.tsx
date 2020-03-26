@@ -15,11 +15,7 @@ const Author = styled.div`
   font-size: 20px;
 `;
 
-export default function Header(props: {
-  title: string,
-  author: string,
-  link: string
-}) {
+export default function Header(props: { title: string; author: string; link: string }) {
   return (
     <RawHeader>
       <Title>{props.title}</Title>
@@ -27,5 +23,5 @@ export default function Header(props: {
         <Author>{props.author}</Author>
       </Link>
     </RawHeader>
-  )
+  );
 }

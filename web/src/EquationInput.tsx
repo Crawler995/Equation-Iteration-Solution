@@ -171,12 +171,14 @@ export default function EqualityInput(props: IProps) {
 
   const renderTips = () => {
     return (
-      <>
-        <Title level={1} text="TIPS" />
+      <details>
+        <summary>
+          <Title level={1} text="TIPS" />
+        </summary>
         <Title level={3} text="Math Symbols" />
         <Title
           level={4}
-          text="Use Python synatx. Your equation will be regarded as a Python sentence to execute."
+          text="Use Python Sympy synatx. Your equation will be regarded as a Python sentence to execute."
         />
         <List.ListWrapper>
           <List.ListItem>You can only use "x" to represent the unknown value.</List.ListItem>
@@ -201,7 +203,7 @@ export default function EqualityInput(props: IProps) {
             errors. It just tries avoiding XSS injection and shows the most obvious synatx errors.`}
           </List.ListItem>
         </List.ListWrapper>
-      </>
+      </details>
     );
   };
 

@@ -17,6 +17,11 @@ const GlobalStyle = createGlobalStyle`
 
     -webkit-tap-highlight-color: transparent;
   }
+
+  summary {
+    outline: none;
+    border: none;
+  }
 `;
 
 function App() {
@@ -29,16 +34,18 @@ function App() {
       <Container>
         <Header
           title="EQUATION ITERATION SOLUTION"
-          author="Zhang Qinglong 1120172135"
+          author="Zhang Qinglong BIT1120172135"
           link="https://github.com/Crawler995"
         />
 
         <Row>
           <Col span={12}>
-            <EqualityInput onSubmitSuccess={(msg) => {
-              setSolutionSteps([]);
-              setSolutionSteps(msg);
-            }} />
+            <EqualityInput
+              onSubmitSuccess={msg => {
+                setSolutionSteps([]);
+                setSolutionSteps(msg);
+              }}
+            />
           </Col>
           <Col span={12}>
             <ResultShow solutionSteps={solutionSteps} />

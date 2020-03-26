@@ -1,5 +1,5 @@
 import React, { createRef, useEffect } from 'react';
-import { Card, List, Button, RawButton } from './neumorphism-ui';
+import { Card, List, RawButton } from './neumorphism-ui';
 import successIcon from './neumorphism-ui/icon/success.png';
 import errorIcon from './neumorphism-ui/icon/error.png';
 import { Step } from './types';
@@ -33,7 +33,7 @@ interface ItemProps {
 const WithIconListItem = styled(List.ListItem)`
   margin-bottom: 10px;
   font-size: 18px;
-  list-style-image: url(${(props: ItemProps) => props.isFailed ? errorIcon : successIcon});
+  list-style-image: url(${(props: ItemProps) => (props.isFailed ? errorIcon : successIcon)});
 `;
 
 export default function ResultShow(props: { solutionSteps: Step[] }) {
@@ -41,35 +41,31 @@ export default function ResultShow(props: { solutionSteps: Step[] }) {
 
   const scrollToTop = () => document.body.scrollIntoView({ behavior: 'smooth' });
   const scrollToResult = () => {
-    if(window.innerWidth > 920) {
+    if (window.innerWidth > 920) {
       return;
     }
 
     cardRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }
+  };
 
   useEffect(() => {
     scrollToResult();
   });
 
-  if(props.solutionSteps.length === 0) {
+  if (props.solutionSteps.length === 0) {
     return <></>;
   }
 
   return (
     <FadeInCard ref={cardRef}>
       <List.ListWrapper>
-        {
-          props.solutionSteps.map((step) => (
-            <WithIconListItem key={step.msg} isFailed={step.is_failed}>
-              {step.msg}
-            </WithIconListItem>
-          ))
-        }
+        {props.solutionSteps.map(step => (
+          <WithIconListItem key={step.msg} isFailed={step.is_failed}>
+            {step.msg}
+          </WithIconListItem>
+        ))}
       </List.ListWrapper>
-      <ReturnToTopButton onClick={scrollToTop}>
-        Scroll To Top
-      </ReturnToTopButton>
+      <ReturnToTopButton onClick={scrollToTop}>Scroll To Top</ReturnToTopButton>
     </FadeInCard>
   );
 }
