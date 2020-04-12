@@ -39,7 +39,8 @@ class EquationSolution:
         pass
 
     def _output_success(self, solution):
-        solution = str(solution).split('.')[0] + '.' + str(solution).split('.')[1][0:self._accurate_digits]
+        # solution = str(solution).split('.')[0] + '.' + str(solution).split('.')[1][0:self._accurate_digits]
+        solution = format(solution, '.%df' % self._accurate_digits)
         self._record_step(False, 'the solution is %s (accurate to %d digits after decimal point)\n' %
                           (solution, self._accurate_digits))
         return float(solution), self._steps

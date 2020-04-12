@@ -27,6 +27,11 @@ class NetwonSolution(EquationSolution):
         double_diff = diff(self._diff_fn, self._x)
         double_diff_a = double_diff.evalf(subs={x: a})
         double_diff_b = double_diff.evalf(subs={x: b})
+
+        self._record_step(False, 'a = %s, b = %s' % (str(a), str(b)))
+        self._record_step(False, 'f(a) = %s, f(b) = %s' % (str(fa), str(fb)))
+        self._record_step(False, 'f\'(a) = %s, f\'(b) = %s' % (str(diff_a), str(diff_b)))
+        self._record_step(False, 'f\'\'(a) = %s, f\'\'(b) = %s' % (str(double_diff_a), str(double_diff_b)))
         '''
         f(a)f(b) < 0
         f'(x) != 0 ~> f'(a)f'(b) > 0

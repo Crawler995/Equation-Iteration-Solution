@@ -29,6 +29,11 @@ class SingleSecantSolution(EquationSolution):
         double_diff = diff(diff_fn, self._x)
         self._double_diff_a = double_diff_a = double_diff.evalf(subs={x: a})
         self._double_diff_b = double_diff_b = double_diff.evalf(subs={x: b})
+
+        self._record_step(False, 'a = %s, b = %s' % (str(a), str(b)))
+        self._record_step(False, 'f(a) = %s, f(b) = %s' % (str(self._fa), str(self._fb)))
+        self._record_step(False, 'f\'(a) = %s, f\'(b) = %s' % (str(diff_a), str(diff_b)))
+        self._record_step(False, 'f\'\'(a) = %s, f\'\'(b) = %s' % (str(self._double_diff_a), str(self._double_diff_b)))
         '''
         f(a)f(b) < 0
         f'(x) != 0 ~> f'(a)f'(b) > 0

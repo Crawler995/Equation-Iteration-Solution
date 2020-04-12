@@ -26,6 +26,10 @@ class DoubleSecantSolution(EquationSolution):
         diff_a = diff_fn.evalf(subs={x: a})
         diff_b = diff_fn.evalf(subs={x: b})
 
+        self._record_step(False, 'a = %s, b = %s' % (str(a), str(b)))
+        self._record_step(False, 'f(a) = %s, f(b) = %s' % (str(self._fa), str(self._fb)))
+        self._record_step(False, 'f\'(a) = %s, f\'(b) = %s' % (str(diff_a), str(diff_b)))
+
         '''
         f(a)f(b) < 0
         f'(x) != 0 ~> f'(a)f'(b) > 0
@@ -35,7 +39,7 @@ class DoubleSecantSolution(EquationSolution):
             and self._multiply_larger_than_zero(diff_a, diff_b)
 
     def run(self):
-        self._record_step(False, 'Single Secant Iteration: ')
+        self._record_step(False, 'Double Secant Iteration: ')
         self._output_convergence()
 
         x = self._x
