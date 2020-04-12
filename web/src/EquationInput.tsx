@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent } from 'react';
-import { Card, Label, Input, Button, Divider, Radio, Title, List, Link } from './neumorphism-ui';
+import { Card, Label, Input, Button, Divider, Radio, Title, List } from './neumorphism-ui';
 import { submitEquationTotalInfo } from './utils/http';
 import {
   validateIterationFn,
@@ -192,15 +192,7 @@ export default function EqualityInput(props: IProps) {
             ', '
           )}.`}</List.ListItem>
           <List.ListItem>
-            You can find the meanings of symbols above in{' '}
-            <Link href="https://www.runoob.com/python/python-numbers.html" target="_blank">
-              Python Number
-            </Link>
-            .
-          </List.ListItem>
-          <List.ListItem>
-            {`When the "Input ${fnSymbol}(x):" is with red border, it doesn't mean that the ${fnSymbol}(x) has no synatx
-            errors. It just tries avoiding XSS injection and shows the most obvious synatx errors.`}
+            {`The "Input ${fnSymbol}(x):" uses red border to try showing the most obvious synatx errors and avoiding XSS injection.`}
           </List.ListItem>
         </List.ListWrapper>
       </details>
